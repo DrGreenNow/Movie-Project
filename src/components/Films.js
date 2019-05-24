@@ -19,7 +19,7 @@ class Films extends React.Component {
                 <div className="recipes__box">
                   <img
                     className="films__img"
-                    src={`https://image.tmdb.org/t/p/w300${film.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
                     alt={film.title}
                   />
                   <div className="recipe__text">
