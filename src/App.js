@@ -32,21 +32,23 @@ class App extends React.Component {
     }
 
     this.setState({ dataSearch: movieName }, () => {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${movieName}&page=1`
-        )
-        .then(response => {
-          this.setState({
-            movies: response.data.results,
-            page: 2,
-            isLoading: false
-          });
-        });
+      // axios
+      //   .get(
+      //     `https://api.themoviedb.org/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${movieName}&page=1`
+      //   )
+      //   .then(response => {
+      //     this.setState({
+      //       movies: response.data.results,
+      //       page: 2,
+      //       isLoading: false
+      //     });
+      //   });
+        this.commonGetRequest("search/movie", `query=${movieName}`);
+        this.setState({page: 2});
     });
   };
 
-  commonGetRequest = (list, query) => {
+  commonGetRequest = (list, query, numberPage) => {
     axios
       .get(
         `https://api.themoviedb.org/3/${list}?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&${query}&page=${
@@ -75,8 +77,6 @@ class App extends React.Component {
   };
 
   addToFavorites = async (e, saveMovie) => {
-    console.log(saveMovie);
-
     if (this.state.favorites.find(i => i === saveMovie) === undefined) {
       await this.setState(state => ({
         favorites: [...this.state.favorites, saveMovie]
@@ -84,8 +84,6 @@ class App extends React.Component {
       const favoritesFilms = JSON.stringify(this.state.favorites);
       localStorage.setItem("favoritesFilms", favoritesFilms);
     };
-
-
   };
 
   render() {
