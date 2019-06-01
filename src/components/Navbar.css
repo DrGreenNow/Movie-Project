@@ -16,5 +16,9 @@
 }
 
 .form-inline {
-display: inline-block;
+  display: inline-block;
+}
+
+.favorites {
+  padding-bottom: 0;
 }

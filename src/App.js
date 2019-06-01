@@ -12,35 +12,44 @@ class App extends React.Component {
     isLoading: true,
     page: 1,
     dataSearch: "",
-    searchMovies: [],
-    searchPage: 1
+    favorites: []
   };
 
   componentDidMount = () => {
     this.loadData();
   };
 
-  fillTheSearch = (e) => {
+  inputData = e => {
     e.preventDefault();
     const movieName = e.target.elements.SearchForMovie.value;
-    this.setState({ dataSearch: movieName, searchPage: 1 });
-    axios
-    .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${movieName}&page=1&`
-    )
-    .then(response => {
-      this.setState(state => ({
-        searchMovies: response.data.results,
-        searchPage: state.searchPage + 1,
-        isLoading: false
-      }));
+    this.setState({ movies: [], page: 1 });
+
+    if (movieName === "") {
+      this.setState({ dataSearch: "" }, () => {
+        this.loadData();
+      });
+      return;
+    }
+
+    this.setState({ dataSearch: movieName }, () => {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${movieName}&page=1`
+        )
+        .then(response => {
+          this.setState({
+            movies: response.data.results,
+            page: 2,
+            isLoading: false
+          });
+        });
     });
   };
 
-  original = () => {
+  commonGetRequest = (list, query) => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&page=${
+        `https://api.themoviedb.org/3/${list}?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&${query}&page=${
           this.state.page
         }`
       )
@@ -52,40 +61,48 @@ class App extends React.Component {
       });
   };
 
-  search = () => {
-    let movieName = this.state.dataSearch;
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${movieName}&page=${
-          this.state.searchPage
-        }&include_adult=false`
-      )
-      .then(response => {
-        this.setState(state => ({
-          searchMovies: [...state.searchMovies, ...response.data.results],
-          isLoading: false
-        }));
-      });
+  loadData = () => {
+    this.state.dataSearch !== ""
+      ? this.commonGetRequest("search/movie", `query=${this.state.dataSearch}`)
+      : this.commonGetRequest("movie/popular", "");
+    const filmsFromStorage = JSON.parse(localStorage.getItem("favoritesFilms"));
+    this.setState(prevState => ({
+      page: prevState.page + 1
+    }));
+    if (filmsFromStorage !== null) {
+      this.setState({ favorites: filmsFromStorage });
+    }
   };
 
-  loadData = () => {
-    this.state.dataSearch !== "" ? this.search() : this.original();
-    this.setState((prevState) => ({ page: prevState.page + 1 }));
-    this.setState((prevState) => ({ searchPage: prevState.searchPage + 1 }));
+  addToFavorites = async (e, saveMovie) => {
+    console.log(saveMovie);
+
+    if (this.state.favorites.find(i => i === saveMovie) === undefined) {
+      await this.setState(state => ({
+        favorites: [...this.state.favorites, saveMovie]
+      }))
+      const favoritesFilms = JSON.stringify(this.state.favorites);
+      localStorage.setItem("favoritesFilms", favoritesFilms);
+    };
+
+
   };
 
   render() {
     return (
       <div className="App">
-        <Navbar search={this.fillTheSearch} />
+        <Navbar search={this.inputData} />
         <div className="container">
           <InfiniteScroll
-            dataLength={this.state.dataSearch !== "" ? this.state.searchMovies.length :this.state.movies.length}
+            dataLength={this.state.movies.length}
             next={this.loadData}
             hasMore={true}
             loader={<h4>Loading...</h4>}
           >
-            <Movies movies={this.state.dataSearch !== "" ? this.state.searchMovies : this.state.movies} />
+            <Movies
+              movies={this.state.movies}
+              saveMovie={this.addToFavorites}
+            />
           </InfiniteScroll>
         </div>
       </div>

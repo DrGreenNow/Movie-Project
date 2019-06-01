@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 // import {fasHeart } from "@fortawesome/free-solid-svg-icons";
 
-import "./Movies.css";
+import "./Favorites.css";
 
-const Movies = props => {
+const Favorites = props => {
 
   return (
     <div className="row">
@@ -55,4 +55,4 @@ const Movies = props => {
   );
 };
 
-export default Movies;
+export default Favorites;
