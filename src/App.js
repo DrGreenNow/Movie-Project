@@ -1,10 +1,13 @@
 import React from "react";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
+
+import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
-import Movies from "./components/Movies";
 import Navbar from "./components/Navbar";
+import Film from "./components/Film";
+import Favorites from "./components/Favorites";
+import Movies from "./components/Movies";
 
 class App extends React.Component {
   state = {
@@ -32,23 +35,12 @@ class App extends React.Component {
     }
 
     this.setState({ dataSearch: movieName }, () => {
-      // axios
-      //   .get(
-      //     `https://api.themoviedb.org/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${movieName}&page=1`
-      //   )
-      //   .then(response => {
-      //     this.setState({
-      //       movies: response.data.results,
-      //       page: 2,
-      //       isLoading: false
-      //     });
-      //   });
-        this.commonGetRequest("search/movie", `query=${movieName}`);
-        this.setState({page: 2});
+      this.commonGetRequest("search/movie", `query=${movieName}`);
+      this.setState({ page: 2 });
     });
   };
 
-  commonGetRequest = (list, query, numberPage) => {
+  commonGetRequest = (list, query) => {
     axios
       .get(
         `https://api.themoviedb.org/3/${list}?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&${query}&page=${
@@ -77,13 +69,18 @@ class App extends React.Component {
   };
 
   addToFavorites = async (e, saveMovie) => {
-    if (this.state.favorites.find(i => i === saveMovie) === undefined) {
+    if (this.state.favorites.find(i => i.id === saveMovie.id) === undefined) {
       await this.setState(state => ({
         favorites: [...this.state.favorites, saveMovie]
-      }))
-      const favoritesFilms = JSON.stringify(this.state.favorites);
-      localStorage.setItem("favoritesFilms", favoritesFilms);
-    };
+      }));
+    } else {
+      let filteredArr = this.state.favorites.filter(
+        item => item.id !== saveMovie.id
+      );
+      await this.setState({ favorites: filteredArr });
+    }
+    const favoritesFilms = JSON.stringify(this.state.favorites);
+    localStorage.setItem("favoritesFilms", favoritesFilms);
   };
 
   render() {
@@ -91,17 +88,34 @@ class App extends React.Component {
       <div className="App">
         <Navbar search={this.inputData} />
         <div className="container">
-          <InfiniteScroll
-            dataLength={this.state.movies.length}
-            next={this.loadData}
-            hasMore={true}
-            loader={<h4>Loading...</h4>}
-          >
-            <Movies
-              movies={this.state.movies}
-              saveMovie={this.addToFavorites}
+          <Switch>
+            <Route
+              path="/"
+              render={props => (
+                <Movies
+                  {...props}
+                  movies={this.state.movies}
+                  saveMovie={this.addToFavorites}
+                  setData={this.loadData}
+                  checkHeart={this.state.favorites}
+                />
+              )}
+              exact
             />
-          </InfiniteScroll>
+            <Route path="/movie/:id" component={Film} />
+            <Route
+              path="/favorites"
+              render={props => (
+                <Favorites
+                  {...props}
+                  movies={this.state.favorites}
+                  saveMovie={this.addToFavorites}
+                  setData={this.loadData}
+                  checkHeart={this.state.favorites}
+                />
+              )}
+            />
+          </Switch>
         </div>
       </div>
     );
