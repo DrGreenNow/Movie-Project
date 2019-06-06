@@ -1,0 +1,35 @@
+[33mcommit 6f3c4e5c35e7e0643d3b50ebce0f606f604d8a00[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: DrGreenNow <AndGreNik@gmail.com>
+Date:   Sat Jun 1 20:58:11 2019 +0300
+
+    split three axious requests in one
+
+[33mcommit 11b4f9061fdcfe2648cf292e0b076c24805740b8[m
+Author: DrGreenNow <AndGreNik@gmail.com>
+Date:   Sat Jun 1 20:34:27 2019 +0300
+
+    add localStorage
+
+[33mcommit 614fc4d1789f47eaa95d93c88d6a07ee6967f7db[m
+Author: DrGreenNow <AndGreNik@gmail.com>
+Date:   Tue May 28 12:38:00 2019 +0300
+
+    implemented search
+
+[33mcommit f35d9efa1db0ce67a3b6e7e7ff7b4e4f0488311b[m
+Author: DrGreenNow <AndGreNik@gmail.com>
+Date:   Fri May 24 19:06:14 2019 +0300
+
+    add dynamic loading
+
+[33mcommit 7947990528605131dfd5ab26b286b1f61344a5f8[m
+Author: DrGreenNow <AndGreNik@gmail.com>
+Date:   Fri May 24 12:00:32 2019 +0300
+
+    before scroll
+
+[33mcommit 9b6a6d687a910dd5125136acbe36c71df529150c[m
+Author: DrGreenNow <AndGreNik@gmail.com>
+Date:   Tue May 21 19:03:44 2019 +0300
+
+    Initial commit from Create React App

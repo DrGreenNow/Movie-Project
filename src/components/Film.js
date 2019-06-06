@@ -26,6 +26,16 @@ class Film extends React.Component {
     this.setState({ recommendedMovies: resRecomendTrim });
   };
 
+  imageClick = id => {
+    // console.log(this.props);
+    // console.log("imgclick");
+
+    this.props.history.push({ pathname: `/movie/${id}` });
+        // this.props.history.push("/movie/" + id);
+            // this.setState({recommendedMovies: []});
+        window.location.reload()
+  };
+
   render() {
     const film = this.state.activeFilm;
     const reccomend = this.state.recommendedMovies;
@@ -70,14 +80,26 @@ class Film extends React.Component {
                   <div className="recomWrapper">
                     {reccomend.map(item => {
                       return (
-                        <img
-                          src={`https://image.tmdb.org/t/p/w185${
-                            item.poster_path
-                          }`}
-                          alt={item.title}
-                          key={item.id}
-                          className = "recomImg"
-                        />
+                        // <button key={item.id}>
+                          // <Link
+                          //   to={{
+                          //     pathname: "/movie/" + item.id,
+                          //     state: { movie: item.title }
+                          //   }}
+                          //   key={item.id}
+                          // >
+                            <img
+                              src={`https://image.tmdb.org/t/p/w185${
+                                item.poster_path
+                              }`}
+                              alt={item.title}
+                              key={item.id}
+                              className="recomImg"
+                              // onClick={this.imageClick(item.id)}
+                              onClick={() => this.imageClick(item.id)}
+                            />
+                          //  </Link>
+                        /* </button> */
                       );
                     })}
                   </div>
