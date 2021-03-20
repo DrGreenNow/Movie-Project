@@ -1,0 +1,174 @@
+.about-me {
+    background-image: url('../../static/backgrounds/main-bg.png');
+
+    .about-me__title {
+        background-image: url('../../static/media/wallpaper.jpg');
+        background-position: 50%;
+        background-size: cover;
+        height: 18.75rem;
+        padding: 0 8.125rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 4rem;
+        box-shadow: 0 0.625rem 1.825rem 0.625rem #494949;
+        position: relative;
+    }
+
+    @media (max-width: 700px) {
+        .about-me__title {
+            padding: 0 2rem;
+            align-items: flex-start;
+            height: 13.75rem;
+        }
+    }
+
+    .about-me__title-text {
+        font-size: 4.1875rem;
+        color: #fff;
+        font-family: Archivo, sans-serif;
+        font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+        .about-me__title-text {
+            font-size: 3.1875rem;
+        }
+    }
+
+    .about-me__avatar {
+        background-image: url('../../static/media/avatar.jpg');
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        height: 10rem;
+        width: 10rem;
+        background-size: cover;
+        border: 3px solid black;
+        border-radius: 50%;
+        margin-left: -5rem;
+    }
+
+    @media (max-width: 700px) {
+        .about-me__avatar {
+            bottom: -80px;
+            height: 8rem;
+            width: 8rem;
+        }
+    }
+
+    .about-me__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 8rem;
+    }
+
+    @media (max-width: 700px) {
+        .about-me__content {
+            padding: 0 .5rem;
+        }
+    }
+
+    .about-me__name-text {
+        font-size: 2rem;
+        color: #1152ba;
+    }
+
+    .about-me__position-text {
+        font-size: 1.5rem;
+    }
+
+    .about-me__email-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        padding-bottom: 2rem;
+    }
+
+    .about-me__email-text-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .about-me__email-icon {
+        margin-right: 10px;
+        color: #1152ba;
+    }
+
+    .about-me__subtitle {
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+        font: 1.6em/1.1 Georgia;
+        padding: 0.2em 0;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.6);
+        width: 70%;
+        margin-top: 2rem;
+        color: #1152ba;
+    }
+
+    .about-me__subtitle::before {
+        left: -0.5em;
+        margin: 0 0 0 -50%;
+    }
+
+    .about-me__subtitle::after {
+        left: 0.5em;
+        margin: 0 -50% 0 0;
+    }
+
+    .about-me__subtitle::before,
+    .about-me__subtitle::after {
+        content: '';
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        height: 2px;
+        vertical-align: middle;
+        background: #000;
+        background-clip: content-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .about-me__skill-item {
+        font-size: 20px;
+        margin: 10px 0;
+        width: 33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-me__skill-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .about-me__work-exp-row {
+        width: 50%;
+        display: flex;
+    }
+
+    @media (max-width: 700px) {
+        .about-me__work-exp-row {
+            width: 80%;
+        }
+    }
+
+    .about-me__company-cell,
+    .about-me__work-cell {
+        width: 50%;
+        margin: 1rem;
+    }
+
+    .about-me__company-cell {
+        text-align: center;
+    }
+
+    .about-me__link {
+        text-decoration: none;
+        font-weight: bold;
+        color: #1152ba;
+    }
+}
