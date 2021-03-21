@@ -17,7 +17,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FILMS:
-            console.log(action)
+            console.log(action);
             return { ...state, movies: [...state.movies, ...action.films] };
 
         case CLEAR_FILMS:
@@ -65,42 +65,39 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-// export const actions = {
-//     addFilms: (films) => ({ type: 'ADD_FILMS', films }),
-//     addFavorites: (favorites) => ({ type: 'ADD_FAVORITES', favorites }),
-// };
+export const actions = {
+    addFilms: (films) => ({ type: 'ADD_FILMS', films }),
+    addFavorites: (favorites) => ({ type: 'ADD_FAVORITES', favorites }),
+};
 
-export const addFilms = (films) => ({ type: ADD_FILMS, films });
-// export const addFavorites = (favorites) => ({ type: 'ADD_FAVORITES', favorites });
-
-// export const getFilms = (searchWord, page) => {
-//     return dispatch => {
-//         getListFilms(searchWord, page).then((results) => {
-//             dispatch(addFilms(results));
-//         });
-//     }
-// };
+export const getFilms = (searchWord, page) => {
+    return (dispatch) => {
+        getListFilms(searchWord, page).then((results) => {
+            dispatch(actions.addFilms(results));
+        });
+    };
+};
 
 export const getFavoriteFilms = (page) => {
     return (dispatch) => {
         getFavoriteList(page).then((results) => {
-            // const filmsFromStorage = JSON.parse(
-            //     localStorage.getItem('favoritesFilms')
-            // );
+            const filmsFromStorage = JSON.parse(
+                localStorage.getItem('favoritesFilms')
+            );
 
-            // filmsFromStorage &&
-            //     results.map((film) => {
-            //         const isFavorite = filmsFromStorage.find((favFilm) => {
-            //             return favFilm.id === film.id;
-            //         });
+            filmsFromStorage &&
+                results.map((film) => {
+                    const isFavorite = filmsFromStorage.find((favFilm) => {
+                        return favFilm.id === film.id;
+                    });
 
-            //         isFavorite
-            //             ? (film.favorite = true)
-            //             : (film.favorite = false);
-            //         return true;
-            //     });
-            dispatch(addFilms(results));
-            // dispatch(actions.addFavorites());
+                    isFavorite
+                        ? (film.favorite = true)
+                        : (film.favorite = false);
+                    return true;
+                });
+            dispatch(actions.addFilms(results));
+            dispatch(actions.addFavorites());
         });
     };
 };

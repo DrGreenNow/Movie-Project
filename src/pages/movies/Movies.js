@@ -16,26 +16,19 @@ import {
     clearFilms,
 } from '../../store/actions/actions';
 import Heart from '../../components/heart/Heart';
-import { 
-    // getFilms, 
-    getFavoriteFilms, 
-    addFilms
- } from '../../store/reducers/movies';
+import { getFilms, getFavoriteFilms } from '../../store/reducers/movies';
 
 import './Movies.scss';
-import { getFavoriteList, 
-    getListFilms
- } from '../../api/api';
+import { getListFilms } from '../../api/api';
 
 const Movies = ({
-    addFilms,
     addFavorites,
     films,
     changeListType,
     searchWord,
     listType,
     clearFilms,
-    // getFilms,
+    getFilms,
     getFavoriteFilms,
 }) => {
     const [page, setPage] = useState(1);
@@ -44,18 +37,17 @@ const Movies = ({
 
     useEffect(() => {
         clearFilms();
-        // loadLookingFilms();
+        loadLookingFilms();
         loadFavoriteFilms();
     }, []);
 
-    // useEffect(() => {
-    //     console.log('searchWord', searchWord)
-    //     if (searchWord) {
-    //         // setPage(1);
-    //         // changeListType('search');
-    //         // loadLookingFilms();
-    //     }
-    // }, [searchWord]);
+    useEffect(() => {
+        if (searchWord) {
+            setPage(1);
+            changeListType('search');
+            loadLookingFilms();
+        }
+    }, [searchWord]);
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -95,38 +87,16 @@ const Movies = ({
         );
     }
 
-    // const loadLookingFilms = () => {
-    //     getListFilms("as", page).then((results) => {
-    //         console.log(results)
-    //         addFilms(results);
-    //     });
-    //     // getFilms("searchWord", page);
-    //     setPage(page + 1);
-    // };
+    const loadLookingFilms = () => {
+        // getListFilms(searchWord, page).then((results) => {
+        //     addFilms(results);
+        // });
+        getFilms(searchWord, page);
+        setPage(page + 1);
+    };
 
     const loadFavoriteFilms = () => {
-        // getFavoriteList(page).then((results) => {
-        //     const filmsFromStorage = JSON.parse(
-        //         localStorage.getItem('favoritesFilms')
-        //     );
-
-        //     filmsFromStorage &&
-        //         results.map((film) => {
-        //             const isFavorite = filmsFromStorage.find((favFilm) => {
-        //                 return favFilm.id === film.id;
-        //             });
-
-        //             isFavorite
-        //                 ? (film.favorite = true)
-        //                 : (film.favorite = false);
-        //             return true;
-        //         });
-        //     addFilms(results);
-        //     addFavorites(filmsFromStorage);
-        // });
-
         getFavoriteFilms(page);
-
         setPage(page + 1);
     };
 
@@ -135,8 +105,8 @@ const Movies = ({
             <Toolbar id="back-to-top-anchor" />
             <InfiniteScroll
                 dataLength={films.length}
-                // next={listType === 'fav' ? loadFavoriteFilms : loadLookingFilms}
-                next={loadFavoriteFilms}
+                next={listType === 'fav' ? loadFavoriteFilms : loadLookingFilms}
+                // next={loadFavoriteFilms}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}>
                 <div className="movies__row">
@@ -203,10 +173,9 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-    addFilms,
     addFavorites,
     changeListType,
     clearFilms,
-    // getFilms,
+    getFilms,
     getFavoriteFilms,
 })(Movies);
