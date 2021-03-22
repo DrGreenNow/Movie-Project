@@ -1,6 +1,3 @@
-export const ADD_FILMS = "ADD_FILMS";
-export const ADD_FAVORITES = "ADD_FAVORITES";
 export const TOGGLE_FAVORITES = "TOGGLE_FAVORITES";
 export const ADD_SEARCH = "ADD_SEARCH";
-export const CLEAR_FILMS = "CLEAR_FILMS";
 export const CHANGE_LIST_TYPE = "CHANGE_LIST_TYPE";

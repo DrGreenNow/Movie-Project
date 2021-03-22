@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { Helmet } from "react-helmet";
-import { Film, Favorites, Movies, Contacts } from '../pages';
+import { Film, Favorites, Movies, Contacts, ErrorPage } from '../pages';
 import Navbar from '../components/navbar/Navbar';
 
 const LLRouter = () => {
@@ -18,6 +18,9 @@ const LLRouter = () => {
                 </Route>
                 <Route path="/favorites" exact>
                     <Favorites />
+                </Route>
+                <Route path="/favorites" exact>
+                    <ErrorPage />
                 </Route>
             </Switch>
         </Router>

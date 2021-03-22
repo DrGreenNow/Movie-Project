@@ -10,19 +10,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import Toolbar from '@material-ui/core/Toolbar';
 
-import {
-    addFavorites,
-    changeListType,
-    clearFilms,
-} from '../../store/actions/actions';
+import { changeListType } from '../../store/actions/actions';
 import Heart from '../../components/heart/Heart';
-import { getFilms, getFavoriteFilms } from '../../store/reducers/movies';
+import { getFilms, getFavoriteFilms, clearFilms } from '../../store/reducers/movies';
 
 import './Movies.scss';
-import { getListFilms } from '../../api/api';
 
 const Movies = ({
-    addFavorites,
     films,
     changeListType,
     searchWord,
@@ -88,9 +82,6 @@ const Movies = ({
     }
 
     const loadLookingFilms = () => {
-        // getListFilms(searchWord, page).then((results) => {
-        //     addFilms(results);
-        // });
         getFilms(searchWord, page);
         setPage(page + 1);
     };
@@ -106,7 +97,6 @@ const Movies = ({
             <InfiniteScroll
                 dataLength={films.length}
                 next={listType === 'fav' ? loadFavoriteFilms : loadLookingFilms}
-                // next={loadFavoriteFilms}
                 hasMore={true}
                 loader={<h4>Loading...</h4>}>
                 <div className="movies__row">
@@ -173,7 +163,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-    addFavorites,
     changeListType,
     clearFilms,
     getFilms,

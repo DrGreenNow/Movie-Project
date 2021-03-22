@@ -1,8 +1,5 @@
-import { ADD_FILMS } from '../actionTypes';
 import { TOGGLE_FAVORITES } from '../actionTypes';
-import { ADD_FAVORITES } from '../actionTypes';
 import { ADD_SEARCH } from '../actionTypes';
-import { CLEAR_FILMS } from '../actionTypes';
 import { CHANGE_LIST_TYPE } from '../actionTypes';
 
 import { getListFilms, getFavoriteList } from '../../api/api';
@@ -16,11 +13,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_FILMS:
+        case 'ADD_FILMS':
             console.log(action);
             return { ...state, movies: [...state.movies, ...action.films] };
 
-        case CLEAR_FILMS:
+        case 'CLEAR_FILMS':
             return { ...state, movies: [] };
 
         case ADD_SEARCH:
@@ -48,7 +45,7 @@ const reducer = (state = initialState, action) => {
                 movies: [...mov],
             };
 
-        case ADD_FAVORITES:
+        case 'ADD_FAVORITES':
             return {
                 ...state,
                 favorites: [...state.favorites, action.content],
@@ -68,6 +65,11 @@ const reducer = (state = initialState, action) => {
 export const actions = {
     addFilms: (films) => ({ type: 'ADD_FILMS', films }),
     addFavorites: (favorites) => ({ type: 'ADD_FAVORITES', favorites }),
+    clearFilms: (empty) => ({ type: 'CLEAR_FILMS', empty }),
+};
+
+export const clearFilms = () => {
+    actions.clearFilms([]);
 };
 
 export const getFilms = (searchWord, page) => {
