@@ -22,30 +22,12 @@
         margin: 5px;
     }
 
-    .ll-btn {
-        line-height: unset;
-        height: unset;
+    .error__title,
+    .error__text {
+        color: #000000;
     }
 
-    .ll-btn__link {
-        margin: 25px;
-        border-radius: 50px;
-        outline: none;
-        font-weight: 500;
-        user-select: none;
-        font-size: 1rem;
-        text-transform: uppercase;
-
-        .dx-button-content {
-            padding: 0;
-            .dx-button-text {
-                padding: 10px 25px;
-            }
-        }
-
-        &:hover {
-            opacity: 0.8;
-            transition: 0.3s;
-        }
+    img {
+        height: 50%;
     }
 }

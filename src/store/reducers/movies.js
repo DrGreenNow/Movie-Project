@@ -69,7 +69,9 @@ export const actions = {
 };
 
 export const clearFilms = () => {
-    actions.clearFilms([]);
+    return (dispatch) => {
+        dispatch(actions.clearFilms([]));
+    };
 };
 
 export const getFilms = (searchWord, page) => {

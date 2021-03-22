@@ -19,7 +19,7 @@ const LLRouter = () => {
                 <Route path="/favorites" exact>
                     <Favorites />
                 </Route>
-                <Route path="/favorites" exact>
+                <Route>
                     <ErrorPage />
                 </Route>
             </Switch>
