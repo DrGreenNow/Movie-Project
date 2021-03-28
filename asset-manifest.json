@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Movie-Project/static/css/main.6e417600.chunk.css",
+    "main.js": "/Movie-Project/static/js/main.38c31aa3.chunk.js",
+    "main.js.map": "/Movie-Project/static/js/main.38c31aa3.chunk.js.map",
+    "runtime-main.js": "/Movie-Project/static/js/runtime-main.987c6f32.js",
+    "runtime-main.js.map": "/Movie-Project/static/js/runtime-main.987c6f32.js.map",
+    "static/js/2.367577ee.chunk.js": "/Movie-Project/static/js/2.367577ee.chunk.js",
+    "static/js/2.367577ee.chunk.js.map": "/Movie-Project/static/js/2.367577ee.chunk.js.map",
+    "index.html": "/Movie-Project/index.html",
+    "static/css/main.6e417600.chunk.css.map": "/Movie-Project/static/css/main.6e417600.chunk.css.map",
+    "static/js/2.367577ee.chunk.js.LICENSE.txt": "/Movie-Project/static/js/2.367577ee.chunk.js.LICENSE.txt",
+    "static/media/404.82558c8f.png": "/Movie-Project/static/media/404.82558c8f.png",
+    "static/media/MoviesPage.scss": "/Movie-Project/static/media/PottaOne-Regular.ef127180.ttf",
+    "static/media/App.scss": "/Movie-Project/static/media/Roboto-Regular.03523cf5.ttf",
+    "static/media/ContactsPage.scss": "/Movie-Project/static/media/wallpaper.0263d7de.jpg",
+    "static/media/no-image-available.d04c7a9d.jpg": "/Movie-Project/static/media/no-image-available.d04c7a9d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.987c6f32.js",
+    "static/js/2.367577ee.chunk.js",
+    "static/css/main.6e417600.chunk.css",
+    "static/js/main.38c31aa3.chunk.js"
+  ]
+}
