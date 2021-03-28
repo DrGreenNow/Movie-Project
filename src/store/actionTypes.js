@@ -1,3 +1,0 @@
-export const TOGGLE_FAVORITES = "TOGGLE_FAVORITES";
-export const ADD_SEARCH = "ADD_SEARCH";
-export const CHANGE_LIST_TYPE = "CHANGE_LIST_TYPE";

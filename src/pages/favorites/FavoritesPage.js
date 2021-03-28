@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom';
 
 import Heart from '../../components/heart/Heart';
 
-import '../movies/Movies.scss';
+import '../movies/MoviesPage.scss';
 
-const Favorites = ({ saveMovie, checkHeart }) => {
+const Favorites = () => {
     const [favorites, setFavorites] = useState([]);
 
     let history = useHistory();
@@ -50,11 +50,8 @@ const Favorites = ({ saveMovie, checkHeart }) => {
                                             <span>{movie.vote_average}</span>
                                         </span>
                                         <Heart
-                                            heartClick={(e) =>
-                                                saveMovie(e, movie)
-                                            }
-                                            checkfav={checkHeart}
-                                            movie={movie}
+                                            favorite={movie.favorite}
+                                            id={movie.id}
                                         />
                                     </div>
                                 </div>

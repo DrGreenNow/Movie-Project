@@ -1,7 +1,7 @@
-import Contacts from './contacts/Contacts';
-import Favorites from './favorites/Favorites';
-import Film from './film/Film';
-import Movies from './movies/Movies';
-import ErrorPage from './error/Error';
+import ContactsPage from './contacts/ContactsPage';
+import FavoritesPage from './favorites/FavoritesPage';
+import FilmPage from './film/FilmPage';
+import MoviesPage from './movies/MoviesPage';
+import ErrorPage from './error/ErrorPage';
 
-export { Favorites, Film, Movies, Contacts, ErrorPage };
+export { FavoritesPage, FilmPage, MoviesPage, ContactsPage, ErrorPage };

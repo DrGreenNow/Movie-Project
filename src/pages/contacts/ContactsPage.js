@@ -4,7 +4,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 import skills from '../../static/config';
 
-import './Contacts.scss';
+import './ContactsPage.scss';
 
 const ContactsPage = () => (
     <div className="about-me">

@@ -1,31 +1,27 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
+import { NavLink, Link, useHistory } from 'react-router-dom';
+import { InputBase, IconButton, Drawer, Paper } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import Drawer from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import MovieOutlinedIcon from '@material-ui/icons/MovieOutlined';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import ContactMailOutlinedIcon from '@material-ui/icons/ContactMailOutlined';
-import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { addFilms, addSearch, clearFilms } from '../../store/actions/actions';
+import { clearFilms, addSearchInputData } from '../../store/movies-reducer';
 
 import './Navbar.scss';
 
-const Navbar = ({ addSearch, clearFilms }) => {
+const Navbar = ({ addSearchInputData, clearFilms }) => {
     const [data, setData] = useState(''),
         [open, setOpen] = useState(false);
 
     let history = useHistory();
 
     const search = () => {
+        addSearchInputData(data);
         setData('');
         clearFilms();
-        addSearch(data);
         history.push(`/`);
     };
 
@@ -74,11 +70,7 @@ const Navbar = ({ addSearch, clearFilms }) => {
                         edge="start">
                         <MenuIcon className="header__menu-icon" />
                     </IconButton>
-                    <NavLink
-                        to="/"
-                        className="header__title"
-                        href="#"
-                        onClick={() => clearFilms()}>
+                    <NavLink to="/" className="header__title" href="#">
                         Movies DB
                     </NavLink>
                 </div>
@@ -126,4 +118,7 @@ const Navbar = ({ addSearch, clearFilms }) => {
     );
 };
 
-export default connect(null, { addFilms, addSearch, clearFilms })(Navbar);
+export default connect(null, {
+    addSearchInputData,
+    clearFilms,
+})(Navbar);

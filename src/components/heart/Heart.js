@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
-import { toggleFavorites } from '../../store/actions/actions';
+import { toggleFavorites } from '../../store/movies-reducer';
 
 import './Heart.scss';
 

@@ -1,7 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import { Helmet } from "react-helmet";
-import { Film, Favorites, Movies, Contacts, ErrorPage } from '../pages';
+import {
+    FilmPage,
+    FavoritesPage,
+    MoviesPage,
+    ContactsPage,
+    ErrorPage,
+} from '../pages';
 import Navbar from '../components/navbar/Navbar';
 
 const LLRouter = () => {
@@ -10,14 +16,14 @@ const LLRouter = () => {
             <Navbar />
             <Switch>
                 <Route path="/" exact>
-                    <Movies />
+                    <MoviesPage />
                 </Route>
-                <Route path="/movie/:id" component={Film} />
+                <Route path="/movie/:id" component={FilmPage} />
                 <Route path="/contacts" exact>
-                    <Contacts />
+                    <ContactsPage />
                 </Route>
                 <Route path="/favorites" exact>
-                    <Favorites />
+                    <FavoritesPage />
                 </Route>
                 <Route>
                     <ErrorPage />

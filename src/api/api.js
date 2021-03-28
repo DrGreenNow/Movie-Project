@@ -4,7 +4,7 @@ const instance = axios.create({
     baseURL: 'https://api.themoviedb.org',
 });
 
-export const getListFilms = (searchWord, page) => {
+export const getSearchList = (searchWord, page) => {
     return instance
         .get(
             `/3/search/movie?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&query=${searchWord}&page=${page}`
@@ -12,7 +12,7 @@ export const getListFilms = (searchWord, page) => {
         .then((response) => response.data.results);
 };
 
-export const getFavoriteList = (page) => {
+export const getPopularList = (page) => {
     return instance
         .get(
             `/3/movie/popular?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&&page=${page}`
@@ -28,7 +28,7 @@ export const getFilm = (id) => {
         .then((response) => response.data);
 };
 
-export const getReccomended = (id) => {
+export const getRecomended = (id) => {
     return instance
         .get(
             `/3/movie/${id}/recommendations?api_key=0d747b42c205fad6e960bdfef2b60881&language=en-US&page=1`

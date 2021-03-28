@@ -4,8 +4,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import StarIcon from '@material-ui/icons/Star';
 
-import { getFilm, getReccomended } from '../../api/api';
-import './Film.scss';
+import { getFilm, getRecomended } from '../../api/api';
+
+import './FilmPage.scss';
 
 const Film = () => {
     const [film, setfilm] = useState([]),
@@ -19,7 +20,7 @@ const Film = () => {
             setfilm(results);
         });
 
-        getReccomended(id).then((results) => {
+        getRecomended(id).then((results) => {
             setRecommendedMovies(results.slice(0, 3));
         });
     };

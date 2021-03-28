@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-import Image from '../../static/error/404.png';
+import Image from '../../static/media/404.png';
 
-import './error-page.scss';
+import './ErrorPage.scss';
 
 const ErrorPage = () => {
     return (
