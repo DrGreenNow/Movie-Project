@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Movie-Project/static/css/main.6e417600.chunk.css",
-    "main.js": "/Movie-Project/static/js/main.a67219a3.chunk.js",
-    "main.js.map": "/Movie-Project/static/js/main.a67219a3.chunk.js.map",
+    "main.js": "/Movie-Project/static/js/main.3ef85327.chunk.js",
+    "main.js.map": "/Movie-Project/static/js/main.3ef85327.chunk.js.map",
     "runtime-main.js": "/Movie-Project/static/js/runtime-main.987c6f32.js",
     "runtime-main.js.map": "/Movie-Project/static/js/runtime-main.987c6f32.js.map",
-    "static/js/2.367577ee.chunk.js": "/Movie-Project/static/js/2.367577ee.chunk.js",
-    "static/js/2.367577ee.chunk.js.map": "/Movie-Project/static/js/2.367577ee.chunk.js.map",
+    "static/js/2.d3ec1599.chunk.js": "/Movie-Project/static/js/2.d3ec1599.chunk.js",
+    "static/js/2.d3ec1599.chunk.js.map": "/Movie-Project/static/js/2.d3ec1599.chunk.js.map",
     "index.html": "/Movie-Project/index.html",
     "static/css/main.6e417600.chunk.css.map": "/Movie-Project/static/css/main.6e417600.chunk.css.map",
-    "static/js/2.367577ee.chunk.js.LICENSE.txt": "/Movie-Project/static/js/2.367577ee.chunk.js.LICENSE.txt",
+    "static/js/2.d3ec1599.chunk.js.LICENSE.txt": "/Movie-Project/static/js/2.d3ec1599.chunk.js.LICENSE.txt",
     "static/media/404.82558c8f.png": "/Movie-Project/static/media/404.82558c8f.png",
     "static/media/MoviesPage.scss": "/Movie-Project/static/media/PottaOne-Regular.ef127180.ttf",
     "static/media/App.scss": "/Movie-Project/static/media/Roboto-Regular.03523cf5.ttf",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.987c6f32.js",
-    "static/js/2.367577ee.chunk.js",
+    "static/js/2.d3ec1599.chunk.js",
     "static/css/main.6e417600.chunk.css",
-    "static/js/main.a67219a3.chunk.js"
+    "static/js/main.3ef85327.chunk.js"
   ]
 }
