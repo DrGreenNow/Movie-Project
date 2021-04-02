@@ -12,7 +12,7 @@ import Navbar from '../components/navbar/Navbar';
 
 const LLRouter = () => {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Navbar />
             <Switch>
                 <Route path="/" exact>
