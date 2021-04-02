@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, HashRouter, Route, Switch } from 'react-router-dom';
 // import { Helmet } from "react-helmet";
 import {
     FilmPage,
@@ -12,7 +12,9 @@ import Navbar from '../components/navbar/Navbar';
 
 const LLRouter = () => {
     return (
-        <Router basename={process.env.PUBLIC_URL}>
+        // <Router basename={process.env.PUBLIC_URL}>
+        // temporary use HashRouter to use at github pages
+        <HashRouter>
             <Navbar />
             <Switch>
                 <Route path="/" exact>
@@ -29,7 +31,8 @@ const LLRouter = () => {
                     <ErrorPage />
                 </Route>
             </Switch>
-        </Router>
+        {/* </Router> */}
+        </HashRouter>
     );
 };
 
